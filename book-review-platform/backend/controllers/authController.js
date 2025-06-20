@@ -286,7 +286,12 @@ const sendTokenResponse = (user, statusCode, res) => {
 
     res
         .status(statusCode)
-        .cookie('token', token, options)
+        .cookie('token', token, {
+            expires: new Date(Date.now() + cookieExpireDays * 24 * 60 * 60 * 1000),
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'None'
+        })
         .json({
             success: true,
             token,
