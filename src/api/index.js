@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: 'https://book-review-platform-tiyb.onrender.com/api/v1/books'
 });
 
 // Add token to requests
