@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configure CORS to allow requests from your Vercel frontend
 app.use(cors({
-  origin: 'https://book-review-platform-c599.vercel.app',
+  origin: process.env.FRONTEND_URL || 'https://book-review-platform-c599.vercel.app',
   credentials: true
 }));
 
