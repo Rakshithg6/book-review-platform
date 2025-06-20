@@ -21,33 +21,11 @@ const app = express();
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// CORS Configuration
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
-  process.env.FRONTEND_URL
-].filter(Boolean);
+// Configure CORS to allow requests from your Vercel frontend
+app.use(cors({
+  origin: 'https://book-review-platform-c599.vercel.app'
+}));
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true,
-  optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
-
-// Middleware
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
 app.use(express.json());
 
 // Dev logging middleware
