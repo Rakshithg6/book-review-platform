@@ -84,7 +84,7 @@ const BookListPage = () => {
           }
         });
         // Use axios for API call
-        const response = await axios.get('http://localhost:5000/api/v1/books', { params });
+        const response = await axios.get('https://book-review-platform-tiyb.onrender.com/api/v1/books', { params });
         setBooks(response.data.data);
         setPagination(prev => ({ ...prev, count: response.data.total }));
       } catch (err) {
