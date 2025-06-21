@@ -1,5 +1,7 @@
 # Full Stack Book Review Platform
 
+![image](https://github.com/user-attachments/assets/79e1ee3e-947c-40a2-b587-ee1b60fa43e5)
+
 ## Objective
 
 A full-stack web application where users can browse books, read and write reviews, and rate books. The application features a React frontend and a Node.js backend using Express and MongoDB.
